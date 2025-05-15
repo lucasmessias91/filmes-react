@@ -1,17 +1,29 @@
 import api from "../../services/api";
 import Button from "../../components/Button";
-import { Background, Container, ContainerButtons, Info, Poster } from "./styles";
+import {
+  Background,
+  Container,
+  ContainerButtons,
+  Info,
+  Poster,
+} from "./styles";
 import { useState, useEffect } from "react";
 
 function Home() {
   const [movie, setMovie] = useState();
-
+  const [topMovies, setTopMovie] = useState();
   useEffect(() => {
     async function getMovies() {
       const { data } = await api.get("/movie/popular");
-      setMovie(data.results[1]);
-      console.log(data.results[1]);
+      setMovie(data.results[0]);
     }
+
+    async function getTopMovies() {
+      const { data } = await api.get("/movie/top_rated");
+      setTopMovie(data.results[0]);
+      console.log(data.results);
+    }
+    getTopMovies();
     getMovies();
   }, []);
 
