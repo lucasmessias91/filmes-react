@@ -1,5 +1,6 @@
 import api from "../../services/api";
-import { Background, Container, Info, Poster } from "./styles";
+import Button from "../../components/Button";
+import { Background, Container, ContainerButtons, Info, Poster } from "./styles";
 import { useState, useEffect } from "react";
 
 function Home() {
@@ -25,6 +26,10 @@ function Home() {
               <Info>
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
+                <ContainerButtons>
+                  <Button red={true}>Assista Agora</Button>
+                  <Button red={false}>Assista o Trailer</Button>
+                </ContainerButtons>
               </Info>
               <Poster>
                 <img
