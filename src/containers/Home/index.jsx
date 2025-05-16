@@ -9,6 +9,7 @@ import {
 } from "./styles";
 import { useState, useEffect } from "react";
 import Slider from "../../components/Slider";
+import { getImages } from "../../utils/getImages";
 
 function Home() {
   const [movie, setMovie] = useState();
@@ -32,7 +33,7 @@ function Home() {
       {movie && (
         <div>
           <Background
-            img={`https://image.tmdb.org/t/p/original/${movie.backdrop_path}`}
+            img={getImages(movie.backdrop_path)}
           >
             <Container>
               <Info>
@@ -45,7 +46,7 @@ function Home() {
               </Info>
               <Poster>
                 <img
-                  src={`https://image.tmdb.org/t/p/original/${movie.poster_path}`}
+                  src={getImages(movie.poster_path)}
                   alt={movie.title}
                 />
               </Poster>
