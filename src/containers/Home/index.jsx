@@ -8,6 +8,7 @@ import {
   Poster,
 } from "./styles";
 import { useState, useEffect } from "react";
+import Slider from "../../components/Slider";
 
 function Home() {
   const [movie, setMovie] = useState();
@@ -20,8 +21,7 @@ function Home() {
 
     async function getTopMovies() {
       const { data } = await api.get("/movie/top_rated");
-      setTopMovie(data.results[0]);
-      console.log(data.results);
+      setTopMovie(data.results);
     }
     getTopMovies();
     getMovies();
@@ -53,6 +53,7 @@ function Home() {
           </Background>
         </div>
       )}
+      {topMovies && <Slider info={topMovies} title={"Top Filmes"}/>}
     </>
   );
 }
