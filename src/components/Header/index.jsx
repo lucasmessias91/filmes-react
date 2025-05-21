@@ -1,12 +1,22 @@
 import { Link, useLocation } from "react-router-dom";
 import { Container, Li, Menu } from "./styles";
 import logo from "../../assets/logo1.png";
+import { useState } from "react";
 
 
 function Header() {
+  const [changeBackground, setChangeBackground] = useState(false);
   const { pathname } = useLocation();
+
+  window.onscroll = () => {
+    if (window.scrollY > 150) {
+      setChangeBackground(true);
+    } else {
+      setChangeBackground(false);
+    }
+  }
   return (
-    <Container>
+    <Container changeBackground={changeBackground}>
       <img src={logo} alt="" />
       <Menu>
         <Li isActive={pathname === "/filmes-react/"}>
