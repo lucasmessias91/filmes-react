@@ -8,6 +8,7 @@ import {
   Poster,
 } from "./styles";
 import { useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 import Slider from "../../components/Slider";
 import Modal from "../../components/Modal";
 import { getImages } from "../../utils/getImages";
@@ -19,6 +20,7 @@ function Home() {
   const [topSeries, setTopSeries] = useState();
   const [popularSeries, setPopularSeries] = useState();
   const [popularPersons, setPopularPersons] = useState();
+  const navigate = useNavigate();
   useEffect(() => {
     async function getMovies() {
       const { data } = await api.get("/movie/popular");
@@ -65,7 +67,7 @@ function Home() {
                 <h1>{movie.title}</h1>
                 <p>{movie.overview}</p>
                 <ContainerButtons>
-                  <Button red={true}>Assista Agora</Button>
+                  <Button red={true} onClick={() => navigate(`/filmes-react/detalhe/${movie.id}`) } >Assista Agora</Button>
                   <Button onClick={() => setShowModal(true)} red={false}>Assista o Trailer</Button>
                 </ContainerButtons>
               </Info>
