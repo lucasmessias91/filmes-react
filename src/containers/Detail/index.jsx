@@ -37,7 +37,6 @@ function Detail({}) {
     }
     getAllData();
   }, []);
-console.log({movieVideos});
   return (
     <>
       {movie && (

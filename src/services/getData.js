@@ -2,7 +2,17 @@ import api from "./api";
 
 export async function getMovies() {
   const { data } = await api.get("/movie/popular");
-  return data.results[0];
+  return data.results;
+}
+
+export async function getUpComing() {
+  const { data } = await api.get("/movie/upcoming");
+  return data.results;
+}
+
+export async function getNowPlaying() {
+  const { data } = await api.get("/movie/now_playing");
+  return data.results;
 }
 
 export async function getTopMovies() {

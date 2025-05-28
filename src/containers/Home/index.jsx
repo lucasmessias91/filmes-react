@@ -55,19 +55,19 @@ function Home() {
     <>
       {movie && (
         <div>
-          <Background img={getImages(movie.backdrop_path)}>
+          <Background img={getImages(movie[0].backdrop_path)}>
             {showModal && (
-              <Modal movieId={movie.id} setShowModal={setShowModal} />
+              <Modal movieId={movie[0].id} setShowModal={setShowModal} />
             )}
             <Container>
               <Info>
-                <h1>{movie.title}</h1>
-                <p>{movie.overview}</p>
+                <h1>{movie[0].title}</h1>
+                <p>{movie[0].overview}</p>
                 <ContainerButtons>
                   <Button
                     red={true}
                     onClick={() =>
-                      navigate(`/filmes-react/detalhe/${movie.id}`)
+                      navigate(`/filmes-react/detalhe/${movie[0].id}`)
                     }
                   >
                     Assista Agora
@@ -78,7 +78,7 @@ function Home() {
                 </ContainerButtons>
               </Info>
               <Poster>
-                <img src={getImages(movie.poster_path)} alt={movie.title} />
+                <img src={getImages(movie[0].poster_path)} alt={movie[0].title} />
               </Poster>
             </Container>
           </Background>
