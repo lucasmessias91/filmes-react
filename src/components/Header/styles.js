@@ -38,7 +38,7 @@ export const Li = styled.li`
     content: "";
     height: 3px;
     width: ${(props) => (props.isActive ? "100%" : "0")};
-    background-color: #189b20;
+    background-color: #ff0000;
     position: absolute;
     bottom: -10px;
     transition: width 0.3s ease-in-out;
