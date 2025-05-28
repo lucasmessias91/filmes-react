@@ -25,7 +25,27 @@ export async function getPopularPersons() {
   return data.results;
 }
 
-export async function getMovie(movieId) {
+export async function getMovieVideos(movieId) {
+  const { data } = await api.get(`/movie/${movieId}/videos`);
+  return data.results;
+}
+
+export async function getMovieVideo(movieId) {
   const { data } = await api.get(`/movie/${movieId}/videos`);
   return data.results[0];
+}
+
+export async function getMovieCredits(movieId) {
+  const { data } = await api.get(`/movie/${movieId}/credits`);
+  return data;
+}
+
+export async function getMovieSimilar(movieId) {
+  const { data } = await api.get(`/movie/${movieId}/similar`);
+  return data.results;
+}
+
+export async function getMovieById(movieId) {
+  const { data } = await api.get(`/movie/${movieId}`);
+  return data;
 }
