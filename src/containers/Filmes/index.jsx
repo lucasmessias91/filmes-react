@@ -44,24 +44,23 @@ function Filmes() {
     }
     getAllData();
   }, []);
-  console.log({ upComing });
   return (
     <>
       {movie && (
         <div>
-          <Background img={getImages(movie[1].backdrop_path)}>
+          <Background img={getImages(movie[2].backdrop_path)}>
             {showModal && (
-              <Modal movieId={movie[1].id} setShowModal={setShowModal} />
+              <Modal movieId={movie[2].id} setShowModal={setShowModal} />
             )}
             <Container>
               <Info>
-                <h1>{movie[1].title}</h1>
-                <p>{movie[1].overview}</p>
+                <h1>{movie[2].title}</h1>
+                <p>{movie[2].overview}</p>
                 <ContainerButtons>
                   <Button
                     red={true}
                     onClick={() =>
-                      navigate(`/filmes-react/detalhe/${movie[1].id}`)
+                      navigate(`/filmes-react/detalhe/${movie[2].id}`)
                     }
                   >
                     Assista Agora
@@ -73,8 +72,8 @@ function Filmes() {
               </Info>
               <Poster>
                 <img
-                  src={getImages(movie[1].poster_path)}
-                  alt={movie[1].title}
+                  src={getImages(movie[2].poster_path)}
+                  alt={movie[2].title}
                 />
               </Poster>
             </Container>

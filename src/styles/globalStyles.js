@@ -15,4 +15,10 @@ export default createGlobalStyle`
     overflow-x: hidden;
   }
 
+  @media (max-width: 768px) {
+    html, body {
+      overflow-x: hidden;
+    }
+  }
+
   `

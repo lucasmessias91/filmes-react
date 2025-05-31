@@ -50,7 +50,6 @@ function Series() {
     }
     getAllData();
   }, []);
-console.log({topSeries});
   return (
     <>
       {topSeries && (
