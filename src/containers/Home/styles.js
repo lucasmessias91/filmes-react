@@ -84,7 +84,7 @@ export const Poster = styled.div`
   }
 
   @media (max-width: 768px) {
-    width: 80%;
+      display: none;
   }
 `;
 

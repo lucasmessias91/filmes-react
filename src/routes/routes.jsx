@@ -15,7 +15,7 @@ function Router() {
       <Route path="/filmes-react/filmes" element={<Filmes />} />
       <Route path="/filmes-react/series" element={<Series />} />
       <Route path="/filmes-react/series" element={<Series />} />
-      <Route path="/filmes-react/detalhe/:id" element={<Detail />} />
+      <Route path="/filmes-react/detalhe/:type/:id" element={<Detail />} />
       </Route>
     </Routes>
   );

@@ -80,9 +80,9 @@ function Filmes() {
           </Background>
         </div>
       )}
-      {nowPlaying && <Slider info={nowPlaying} title={"Em Alta"} />}
-      {topMovies && <Slider info={topMovies} title={"Top Filmes"} />}
-      {upComing && <Slider info={upComing} title={"Em Breve!"} />}
+      {nowPlaying && <Slider info={nowPlaying} media_type="movie" title={"Em Alta"} />}
+      {topMovies && <Slider info={topMovies} media_type="movie" title={"Top Filmes"} />}
+      {upComing && <Slider info={upComing} media_type="movie" title={"Em Breve!"} />}
     </>
   );
 }

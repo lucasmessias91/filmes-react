@@ -59,3 +59,23 @@ export async function getMovieById(movieId) {
   const { data } = await api.get(`/movie/${movieId}`);
   return data;
 }
+
+export async function getSeriesVideos(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/videos`);
+  return data.results;
+}
+
+export async function getSeriesById(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}`);
+  return data;
+}
+
+export async function getSeriesCredits(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/credits`);
+  return data;
+}
+
+export async function getSeriesSimilar(seriesId) {
+  const { data } = await api.get(`/tv/${seriesId}/similar`);
+  return data.results;
+}

@@ -6,6 +6,10 @@ import {
   getMovieCredits,
   getMovieSimilar,
   getMovieVideos,
+  getSeriesById,
+  getSeriesVideos,
+  getSeriesCredits,
+  getMovieVideo,
 } from "../../services/getData";
 import { useParams } from "react-router-dom";
 import { getImages } from "../../utils/getImages";
@@ -17,26 +21,33 @@ function Detail({}) {
   const [movieVideos, setMovieVideos] = useState();
   const [movieCredits, setMovieCredits] = useState();
   const [similarMovies, setSimilarMovies] = useState();
-  const { id } = useParams();
+  const { id, type } = useParams();
 
   useEffect(() => {
     async function getAllData() {
-      Promise.all([
-        getMovieById(id),
-        getMovieVideos(id),
-        getMovieCredits(id),
-        getMovieSimilar(id),
-      ])
-        .then(([movie, videos, credits, similar]) => {
-          setMovie(movie);
-          setMovieVideos(videos);
-          setMovieCredits(credits);
-          setSimilarMovies(similar);
-        })
-        .catch((error) => console.error("Error fetching data:", error));
+      try {
+        const getDetails = type === "tv" ? getSeriesById : getMovieById;
+        const getVideos = type === "tv" ? getSeriesVideos : getMovieVideos;
+        const getCredits = type === "tv" ? getSeriesCredits : getMovieCredits;
+        const getSimilar = type === "tv" ? getMovieSimilar : getMovieSimilar;
+
+        const [details, videos, credits, similar] = await Promise.all([
+          getDetails(id),
+          getVideos(id),
+          getCredits(id),
+          getSimilar(id),
+        ]);
+
+        setMovie(details);
+        setMovieVideos(videos);
+        setMovieCredits(credits);
+        setSimilarMovies(similar);
+      } catch (error) {
+        console.error("Error fetching data:", error);
+      }
     }
     getAllData();
-  }, []);
+  }, [id, type]);
   return (
     <>
       {movie && (
@@ -55,20 +66,20 @@ function Detail({}) {
           </Container>
           <ContainerMovies>
             {movieVideos &&
-            movieVideos.map((video) => (
-            <div key={video.id}>
-              <h4>{video.name}</h4>
-              <iframe
-                src={`https://youtube.com/embed/${video.key}`}
-                title="YouTube video player"
-                height="500px"
-                width="100%"
-              ></iframe>
-            </div>  
-            ))}  
+              movieVideos.map((video) => (
+                <div key={video.id}>
+                  <h4>{video.name}</h4>
+                  <iframe
+                    src={`https://youtube.com/embed/${video.key}`}
+                    title="YouTube video player"
+                    height="500px"
+                    width="100%"
+                  ></iframe>
+                </div>
+              ))}
           </ContainerMovies>
           {similarMovies && (
-              <Slider info={similarMovies} title={'Filmes Similares'} />
+            <Slider info={similarMovies} title={"Similares"} />
           )}
         </>
       )}

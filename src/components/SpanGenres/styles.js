@@ -22,5 +22,15 @@ export const Container = styled.div`
     }
 
   }
+
+  @media (max-width: 768px) {
+    flex-wrap: wrap;
+    justify-content: center;
+    span {
+      margin: 5px;
+      padding: 8px 12px;
+      font-size: 10px;
+    }
+  }
 `
 

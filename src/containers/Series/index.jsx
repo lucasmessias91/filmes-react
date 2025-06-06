@@ -83,13 +83,9 @@ function Series() {
           </Background>
         </div>
       )}
-      {topMovies && <Slider info={topMovies} title={"Top Filmes"} />}
-      {topSeries && <Slider info={topSeries} title={"Top Series"} />}
+      {topSeries && <Slider info={topSeries} media_type="tv" title={"Top Series"} />}
       {popularSeries && (
-        <Slider info={popularSeries} title={"Séries Populares"} />
-      )}
-      {popularPersons && (
-        <Slider info={popularPersons} title={"Artistas Populares"} />
+        <Slider info={popularSeries} media_type="tv" title={"Séries Populares"} />
       )}
     </>
   );
